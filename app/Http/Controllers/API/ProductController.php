@@ -13,8 +13,8 @@ class ProductController extends Controller
     public function all(request $request)
     {
         $id = $request->input("id");
-        $limit = $request->input("limit");
-        $name = $request->input("id");
+        $limit = $request->input("limit", 6);
+        $name = $request->input("name");
         $description = $request->input("description");
         $tags = $request->input("tags");
         $categories = $request->input("categories");
@@ -24,10 +24,11 @@ class ProductController extends Controller
 
         if ($id) {
             $product = Product::with(['category', 'galleries'])->find($id);
+
             if ($product) {
                 return ResponseFormatter::success(
                     $product,
-                    'Data produk berhasil diambil'
+                    'Data produk berhasil diambil',
                 );
             }
             else {

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class TransactionItem extends Model
 {
-    use HasFactory, SoftDeletes;
+    use HasFactory;
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +19,7 @@ class TransactionItem extends Model
         'users_id',
         'products_id',
         'transactions_id',
-        'quanitity'
+        'quantity'
     ];
 
     public function product()
